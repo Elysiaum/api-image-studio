@@ -1,0 +1,60 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "api-image-studio"
+description = "Windows 桌面生图工具：接入任意 OpenAI 兼容 API 中转站，或本地/远程 ComfyUI"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Elysiaum" }]
+keywords = [
+    "image-generation", "text-to-image", "comfyui", "stable-diffusion",
+    "openai", "dall-e", "flux", "kolors", "tkinter", "windows", "desktop",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Win32 (MS Windows)",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: Microsoft :: Windows",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Multimedia :: Graphics",
+    "Topic :: Desktop Environment",
+]
+dynamic = ["version"]
+dependencies = [
+    "customtkinter>=5.2.0,<7",
+    "requests>=2.31.0",
+    "Pillow>=10.0.0",
+    "websocket-client>=1.6.0",
+]
+
+[project.optional-dependencies]
+dev = ["pyinstaller>=6.0"]
+
+[project.urls]
+Homepage = "https://github.com/Elysiaum/api-image-studio"
+Repository = "https://github.com/Elysiaum/api-image-studio"
+Issues = "https://github.com/Elysiaum/api-image-studio/issues"
+Changelog = "https://github.com/Elysiaum/api-image-studio/blob/main/CHANGELOG.md"
+
+[project.gui-scripts]
+api-image-studio = "api_image_studio.__main__:main"
+
+[tool.setuptools.dynamic]
+version = { attr = "api_image_studio.__version__" }
+
+[tool.setuptools]
+package-dir = { "" = "src" }
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+api_image_studio = ["assets/*.ico"]
